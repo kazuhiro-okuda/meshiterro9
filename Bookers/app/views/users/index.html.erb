@@ -9,12 +9,12 @@
 			<table class="table">
 				<tbody>
 					<tr>
-						<th>name</th>
-						<th><%= @user.name %></th>
+						<th class="col-xs-12">name</th>
+						<th class="col-xs-12"><%= @user.name %></th>
 					</tr>
 					<tr>
-						<th>introduction</th>
-						<th><%= @user.self_introduction_text %></th>
+						<th class="col-xs-12">introduction</th>
+						<th class="col-xs-12"><%= @user.self_introduction_text %></th>
 					</tr>
 				</tbody>
 			</table>
@@ -35,15 +35,15 @@
 			<%= form_for(@book) do |f| %>
 			<div class="field">
 				<label class="book_title">Title</label>
-				<%= f.text_field :title, class: "book_title" %>
+				<%= f.text_field :title, class: "col-xs-12 book_title" %>
 			</div>
 			<div class="field">
 				<label class="book_body">Opinion</label>
-				<%= f.text_area :opinion, class: "book_body" %>
+				<%= f.text_area :opinion, class: "col-xs-12 book_body" %>
 			</div>
 
 			<div class="actions">
-				<%= f.submit 'Create Book', class: "btn btn-primary" %>
+				<%= f.submit 'Create Book', class: "col-xs-12 btn btn-primary" %>
 			</div>
 			<% end %>
 	    </div>
