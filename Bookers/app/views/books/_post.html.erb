@@ -1,0 +1,21 @@
+<%#  <% render "books/post", books: @book %>
+<%#@bookをbooksとして渡している↑%>
+
+<div>
+    <h2>New book</h2>
+
+    <%= form_for(books) do |book| %>
+  <div class="field row">
+    <label for="book_title", class="col-xs-12 book_title">Title</label>
+     <%= book.text_field :title %>
+  </div>
+  <div class="field row">
+    <label for="book_opinion", class="col-xs-12 book_body">Opinion</label>
+    <%= book.text_area :opinion %>
+  </div>
+
+  <div class="actions row">
+    <%= book.submit 'Create Book' %>
+  </div>
+<% end %>
+</div>

@@ -1,0 +1,101 @@
+<%= render "home/header" %>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-3">
+			<h2>User info</h2>
+			<div class="user-image">
+				<%= attachment_image_tag @user, :avatar_image, :fill, 60, 60, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg"%>
+			</div>
+			<table class="table">
+				<tbody>
+					<tr>
+						<th>name</th>
+						<th><%= @user.name %></th>
+					</tr>
+					<tr>
+						<th>introduction</th>
+						<th><%= @user.self_introduction_text %></th>
+					</tr>
+				</tbody>
+			</table>
+			<div>
+				<%= link_to '', edit_user_path(@user.id), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_3589 edit_user_#{@user.id}" %>
+			</div>
+		</div>
+		<div class="col-xs-9">
+			<h2>Book detail</h2>
+			<table class="table">
+				<thead>
+					<tr>
+						<th></th>
+						<th>Title</th>
+						<th>Opinion</th>
+						<th class="colspan=3"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><%= link_to user_path(@book.user_id), class: "user_#{@book.id}" do %>
+							<%= attachment_image_tag @book.user, :avatar_image, :fill, 60, 60, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg"%>
+							<% @book.user.name %>
+							<% end %>
+						</td>
+						<td><%= link_to book_path(@book.id), class: "book_#{@book.id}" do%>
+							<%= @book.title %>
+							<% end %>
+						</td>
+						<td><%= @book.opinion %></td>
+						<td>
+							<% if @book.user == current_user %>
+							<%= link_to "Edit", edit_book_path(@book.id), class: "edit_#{@book.id} btn-sm btn-success" %>
+							<% end %>
+						</td>
+						<td>
+							<% if @book.user == current_user %>
+							<%= link_to "Destroy", book_path(@book.id), class: "destroy_#{@book.id} btn-sm btn-danger", method: :delete, data: { confirm: "Are you sure?"} %>
+							<% end %>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-3">
+			<h2>New book</h2>
+			<% if @newbook.errors.any? %>
+			<div id="error_explanation">
+				<h2><%= @newbook.errors.count %>件のエラーが発生しました。</h2>
+				<ul>
+					<% @newbook.errors.full_messages.each do |message| %>
+					<li><%= message %></li>
+					<% end %>
+					<% end %>
+				</ul>
+				<%= form_for(@newbook) do |f| %>
+				<div class="field">
+					<label for="book_title", class="col-xs-12 book_title">Title</label>
+					<%= f.text_field :title, class: "col-xs-12 book_title" %>
+				</div>
+				<div class="field row">
+					<label for="book_opinion", class="col-xs-12 book_body">Opinion</label>
+					<%= f.text_area :opinion, class: "col-xs-12 book_body" %>
+				</div>
+				<div class="actions row">
+					<%= f.submit 'Create Book', class: "btn btn-primary col-xs-12" %>
+				</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
+<footer>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-3 col-xs-offset-9">
+				<p>CopyRight Infratop.inc</p>
+			</div>
+	    </div>
+	</div>
+</footer>

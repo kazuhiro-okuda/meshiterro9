@@ -1,0 +1,23 @@
+<%#   <%= render "users/info" users: @owndata %>
+
+<div class="col-xs-3">
+	<h2>User info</h2>
+	<div class="user-image">
+		<%= attachment_image_tag @user, :avatar_image_id, :fill, 60, 60, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg"%>
+	</div>
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>name</th>
+				<th><%= @user.name %></th>
+			</tr>
+			<tr>
+				<th>introduction</th>
+				<th><%= @user.self_introduction_text %></th>
+			</tr>
+		</tbody>
+	</table>
+	<div class="row">
+		<%= link_to 'Update_icon', edit_user_path(current_user), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench" %>
+	</div>
+</div>
