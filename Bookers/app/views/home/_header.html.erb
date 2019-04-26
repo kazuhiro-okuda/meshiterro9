@@ -2,8 +2,8 @@
 
 <header class="navbar navbar-fixed-top navbar-inverse" >
 	<div class="container">
-		<div><p class="bookers_title">Bookers</p></div>
-			<ul class="nav_box">
+		<div><p class="bookers_logo">Bookers</p></div>
+			<ul class="nav navbar-nav navbar-right">
 				<% if user_signed_in? %>
 				<li class="nav_item"><%= link_to "Home", user_path(current_user), class: "glyphicon glyphicon-home text-muted home" %></li>
 				<li class="nav_item"><%= link_to "Users", users_path, class: "glyphicon glyphicon-link text-muted users" %></li>
